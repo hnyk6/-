@@ -1,0 +1,30 @@
+package com.ctgu1;
+
+public class VBA {
+	 static double lockPirce = 45;
+	 static double stockPrice= 30;
+	 static double barrelPrice = 25;
+	 static double totalLocks = 0;
+	 static double totalStocks = 0;
+	 static double totalBarrel = 0;
+	public static String classify(int lock, int stock, int barrel) {
+		totalLocks = totalLocks + lock;
+		totalStocks = totalStocks + stock;
+		totalBarrel = totalBarrel + barrel;
+		
+		double allsales = totalLocks*lockPirce+totalStocks*stockPrice+totalBarrel*barrelPrice;
+
+		double commission;
+		if(allsales>1800) {
+			commission = (allsales -1800)*0.2 +800 * 0.15 + 1000*0.1;
+		}else if(allsales>1000) {
+			commission = (allsales -1000)*0.15 + 1000*0.1;
+		}else {
+			commission = allsales *0.1;
+			}
+		System.out.println(commission);
+		String sum = String.valueOf(commission);
+		return sum ;
+		
+	}
+}
