@@ -1,0 +1,50 @@
+package com.ctgu1;
+
+import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
+
+//参数化运行器
+@RunWith(Parameterized.class)
+public class VBATest {
+	private int a,b,c;
+	private String type;
+	
+	@Before
+	public void setUp() throws Exception {
+	}
+	
+	public VBATest(int a, int b, int c, String type) {
+		this.a = a;
+		this.b = b;
+		this.c = c;
+		this.type = type;
+	}
+	
+	@Parameters
+	public static Collection<Object[]> getData() {
+		return Arrays.asList(
+				new Object[][] { 
+					{ 5, 7, 9, "66.0" }, 
+					{ 18, 20, 25, "399.0" }, 
+					{ 3, 3, 3, "459.0" }, 
+					{ 7, 9, 7, "611.0" },
+					{ 15, 15, 15, "911.0" }, 
+					{ 20, 30, 20, "1371.0" }, 
+					{ 45, 45, 45, "2271.0" }, 
+					{ 50, 12, 30, "2943.0" },
+		});
+	}
+	
+	@Test
+	public void testClassify() {
+		assertEquals(this.type, VBA.classify(a, b, c));
+	}
+}
